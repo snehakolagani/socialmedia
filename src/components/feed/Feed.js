@@ -1,8 +1,22 @@
-import './Feed.css'
+import Post from '../Post/post';
+import Share from '../Share/share';
+import './Feed.css';
+import { Posts } from '../../dummyData';
+
 
 function Feed() {
   return (
-    <div className='feed'>Feed</div>
+    
+    <div className='feed'>
+      <div className='feedWrapper'>
+        <Share />
+        {Posts.map((p)=>(
+
+      <Post key={p.id} post={p} />
+        ))}
+      
+      </div>
+    </div>
   )
 }
 
