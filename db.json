@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": "58fa",
+      "username": "skolagani",
+      "password": "1234",
+      "firstName": "sneha",
+      "email": "snehakolagani@gmail.com"
+    },
+    {
+      "id": "a250",
+      "firstName": "sneha",
+      "username": "snehakolagani",
+      "email": "snehakolagani@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "d067",
+      "firstName": "sneha",
+      "username": "snehakolagani",
+      "email": "snehakolagani@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "c2f4",
+      "firstName": "sneha",
+      "username": "test",
+      "email": "snehakolagani@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "9fbd",
+      "username": "sneha"
+    },
+    {
+      "id": "15c2",
+      "firstName": "sneha",
+      "username": "sneha1",
+      "email": "snehakolagani@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "bdb6",
+      "firstName": "sneha",
+      "username": "sk",
+      "email": "snehakolagani@gmail.com",
+      "password": "1234"
+    }
+  ]
+}
