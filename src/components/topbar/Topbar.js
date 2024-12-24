@@ -3,27 +3,26 @@ import './Topbar.css';
 import { Search, Person, Chat, Notifications } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
+// Popup components for Notification, Chat, and Friend Request
+import NotificationPopup from '../Notifications/Notifications'; 
+import ChatPopup from '../Chat/Chat'; 
+import FriendRequestPopup from '../FriendRequest/FriendRequest'; 
+import EditProfile from '../EditProfile/Editprofile';
+
 function Topbar() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);  // State to toggle dropdown visibility
-  const navigate = useNavigate();  // React Router navigation
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [activePopup, setActivePopup] = useState(null); // State to track the currently active popup
+  const navigate = useNavigate();
+  
+  // Navigation handlers
+  const handleFriendRequest = () => setActivePopup('friendRequest');
+  const handleChat = () => setActivePopup('chat');  // Open Chat Popup
+  const handleNotifications = () => setActivePopup('notification');  // Open Notification Popup
+  const handleLogout = () => navigate('/logout');
+  const handleEditProfile = () => navigate('/editprofile');
 
-  // Handle click on profile image to toggle dropdown
-  const handleProfileClick = () => {
-    setIsDropdownOpen(prev => !prev);  // Toggle the state of the dropdown menu
-  };
-
-  // Handle logout
-  const handleLogout = () => {
-    // Clear session or user data if needed (e.g., localStorage.removeItem('userToken'))
-    setIsDropdownOpen(false);  // Close dropdown
-    navigate('/logout');  // Redirect to login page
-  };
-
-  // Handle edit profile
-  const handleEditProfile = () => {
-    setIsDropdownOpen(false);  // Close dropdown
-    navigate('/editprofile');  // Redirect to edit profile page
-  };
+  // Close the popup
+  const closePopup = () => setActivePopup(null);
 
   return (
     <div className="topbarContainer">
@@ -45,22 +44,24 @@ function Topbar() {
         </div>
 
         <div className="topbarIcons">
-          <div className="topbarIconItem">
-            <Person />
+          <div className="topbarIconItem" onClick={handleFriendRequest}>
+            <Person /> {/* Correctly used as a React Component */}
             <span className="topbarIconBadge">1</span>
           </div>
-          <div className="topbarIconItem">
+
+          <div className="topbarIconItem" onClick={handleChat}>
             <Chat />
             <span className="topbarIconBadge">2</span>
           </div>
-          <div className="topbarIconItem">
+
+          <div className="topbarIconItem" onClick={handleNotifications}>
             <Notifications />
             <span className="topbarIconBadge">3</span>
           </div>
         </div>
 
-        {/* Profile image */}
-        <div className="topbarProfile" onClick={handleProfileClick}>
+        {/* Profile image with dropdown */}
+        <div className="topbarProfile" onClick={() => setIsDropdownOpen((prev) => !prev)}>
           <img
             src="/assets/person/1.jpeg"
             alt="profilePic"
@@ -78,6 +79,12 @@ function Topbar() {
           )}
         </div>
       </div>
+
+      {/* Conditionally render the popups */}
+      {activePopup === 'notification' && <NotificationPopup closePopup={closePopup} />}
+      {activePopup === 'chat' && <ChatPopup closePopup={closePopup} />}
+      {activePopup === 'friendRequest' && <FriendRequestPopup closePopup={closePopup} />}
+      
     </div>
   );
 }

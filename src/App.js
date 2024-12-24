@@ -5,19 +5,29 @@ import Login from './pages/Login/Login';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import Profile from './pages/profile/Profile';
 import Logout from './pages/Logout/Logout';
-import EditProfile from './components/EditProfile.js/Editprofile';
+
+import Notifications from './components/Notifications/Notifications';
+import ChatWindow from './components/Chat/Chat';
+import FriendRequest from './components/FriendRequest/FriendRequest';
+import EditProfile from './components/EditProfile/Editprofile';
 
 const App = () => {
-  const [profileData, setProfileData] = useState({
-    name: 'Sneha Kolagani',
-    description: 'Hi Friend there!',
-  });
+ 
+    const [profileData, setProfileData] = useState({
+      name: 'John Doe',
+      description: 'Software Developer',
+    });
+       
+    const updateProfile = (updatedData) => {
+      setProfileData(updatedData);
+      console.log('updated data',updatedData)
+    };
+  
 
-  const handleProfileUpdate = (updatedProfile) => {
-    setProfileData(updatedProfile);
-  };
+  
 
   return (
+    
     <Router>
       <div>
         <Routes>
@@ -28,14 +38,17 @@ const App = () => {
             path='/profile' 
             element={<Profile profileData={profileData} />} 
           />
-          <Route path='/logout' element={<Logout />} />
-          <Route 
-            path='/editprofile' 
-            element={<EditProfile 
-              profileData={profileData} 
-              onProfileUpdate={handleProfileUpdate} 
-            />} 
-          />
+          <Route path='/editprofile' element={  <EditProfile
+          profileData={profileData}
+          updateProfile={updateProfile}
+         
+        />}
+      
+       />
+                <Route path='/logout' element={<Logout />} />
+                <Route path='notifications' element={<Notifications />} />
+                <Route path='chat' element={<ChatWindow />} />
+                <Route path='friendRequest' element={<FriendRequest />} />
         </Routes>
       </div>
     </Router>

@@ -1,0 +1,84 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+  
+  .popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    width: 400px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .chat-box {
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .chat-message {
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  .chat-message.you {
+    background-color: #d1ffd1;
+    text-align: right;
+  }
+  
+  .chat-message.friend {
+    background-color: #f1f1f1;
+  }
+  
+  .chat-input {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .chat-input input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .chat-input button {
+    width: 15%;
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .chat-input button:hover {
+    background-color: darkblue;
+  }
+  
+  .close-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .close-btn:hover {
+    background-color: darkred;
+  }
+  
